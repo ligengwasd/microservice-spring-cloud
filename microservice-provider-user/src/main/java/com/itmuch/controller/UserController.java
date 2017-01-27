@@ -8,7 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by ligeng on 17/1/14.
@@ -21,11 +25,19 @@ public class UserController {
     @Autowired
     private DiscoveryClient discoveryClient;
 
-    @GetMapping("index")
-    public Student index(){
-        Student student = new Student();
+    @PostMapping("index")
+    public List<Student> index(){
+        List<Student> list = new ArrayList<Student>();
+        Student<Student> student = new Student<Student>();
+        Student student2 = new Student(){{
+            name = "inner name";
+        }};
         student.name = "ligeng";
-        return student;
+        student.data = student2;
+
+        list.add(student);
+        list.add(student2);
+        return list;
     }
 
     @GetMapping("eureka-instance")
