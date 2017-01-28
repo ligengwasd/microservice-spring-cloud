@@ -5,6 +5,7 @@ import com.netflix.appinfo.InstanceInfo;
 import com.netflix.discovery.EurekaClient;
 import com.netflix.discovery.converters.Auto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,9 +25,12 @@ public class UserController {
     private EurekaClient eurekaClient;
     @Autowired
     private DiscoveryClient discoveryClient;
+    @Value("${server.port}")
+    private String port;
 
     @GetMapping("index")
     public List<Student> index(){
+        System.out.println(port);
         List<Student> list = new ArrayList<Student>();
         Student<Student> student = new Student<Student>();
         Student student2 = new Student(){{

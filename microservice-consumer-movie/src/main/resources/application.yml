@@ -2,7 +2,6 @@ server:
   port: 8900
 user:
    userServicePath: http://localhost:7900/
-
 spring:
 #  jpa:
 #    generate-ddl: false
