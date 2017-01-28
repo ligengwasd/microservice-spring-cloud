@@ -23,7 +23,7 @@ public class MovieController {
 
 
     @GetMapping("/movie")
-    public Student index(){
-        return restTemplate.getForObject(userServicePath+"index", Student.class);
+    public String index(){
+        return restTemplate.getForObject(userServicePath+"index", String.class);
     }
 }

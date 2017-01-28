@@ -25,7 +25,7 @@ public class UserController {
     @Autowired
     private DiscoveryClient discoveryClient;
 
-    @PostMapping("index")
+    @GetMapping("index")
     public List<Student> index(){
         List<Student> list = new ArrayList<Student>();
         Student<Student> student = new Student<Student>();
