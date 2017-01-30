@@ -28,7 +28,7 @@ public class MovieController {
     public String index(){
         return restTemplate.getForObject("http://microservice-provider-user/"+"index", String.class);
     }
-    @GetMapping("test")
+    @GetMapping("test1")
     public String test(){
         ServiceInstance instance = loadBalancerClient.choose("http://microservice-provider-user");
         System.out.println(instance.getHost()+":"+instance.getPort()+" "+instance.getServiceId());

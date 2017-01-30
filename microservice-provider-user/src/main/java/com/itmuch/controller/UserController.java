@@ -1,6 +1,7 @@
 package com.itmuch.controller;
 
 import com.itmuch.model.Student;
+import com.itmuch.model.User;
 import com.netflix.appinfo.InstanceInfo;
 import com.netflix.discovery.EurekaClient;
 import com.netflix.discovery.converters.Auto;
@@ -8,9 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,4 +54,23 @@ public class UserController {
         ServiceInstance instance = discoveryClient.getLocalServiceInstance();
         return instance;
     }
+
+
+
+
+    @GetMapping("/simple/{id}")
+    public User findById(@PathVariable Long id) {
+        User user = new User();
+        user.setId(id);
+        return user;
+    }
+    @PostMapping("/user")
+    public User postUser(@RequestBody User user) {
+        return user;
+    }
+    @GetMapping("/get-user")
+    public User getUser(User user) {
+        return user;
+    }
+
 }
