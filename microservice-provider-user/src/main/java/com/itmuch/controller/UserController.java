@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -69,7 +70,23 @@ public class UserController {
         return user;
     }
     @GetMapping("/get-user")
-    public User getUser(User user) {
+    public User getUser(@ModelAttribute User user) {
+        return user;
+    }
+
+    @DeleteMapping("/delete")
+    public User deleteTest(@RequestBody User user){
+        return user;
+    }
+
+    @PutMapping("/test-put/{id}")
+    public User testPut(@PathVariable Long id,@RequestBody User user){
+        user.setId(id);
+        return user;
+    }
+
+    @PutMapping("/test-put2")
+    public User testPut2(@ModelAttribute User user){
         return user;
     }
 

@@ -30,7 +30,7 @@ eureka:
   instance:
     prefer-ip-address: true
     instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${spring.application.instance_id:${server.port}}
-# feign client的日志必须配置为 debug ，Logger.Level.FULL 的配置才会生效。
+# feign client的日志必须在这里配置 ，bean里的配置Logger.Level.FULL才会生效。参见 FeignTestConfiguration类里的配置
 logging:
   level:
     com.itmuch.feign.UserFeignClient: DEBUG
