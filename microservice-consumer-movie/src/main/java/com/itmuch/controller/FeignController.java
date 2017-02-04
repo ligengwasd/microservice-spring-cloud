@@ -2,6 +2,7 @@ package com.itmuch.controller;
 
 import com.itmuch.feign.User;
 import com.itmuch.feign.UserFeignClient;
+import com.itmuch.model.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -52,4 +53,13 @@ public class FeignController {
         user.setName("ligeng");
         return this.userFeignClient.testPut2(user);
     }
+
+    @GetMapping("/test-gen")
+    public Student<User> testGeneric(){
+        Student<User> data =this.userFeignClient.testGeneric();
+        System.out.println(data.data.getUsername());
+        return data;
+    }
+
+
 }

@@ -5,5 +5,5 @@ package com.itmuch.model;
  */
 public class  Student <T>{
     public String name;
-    public Student data;
+    public T data;
 }

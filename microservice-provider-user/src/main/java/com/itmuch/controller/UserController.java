@@ -91,4 +91,16 @@ public class UserController {
         return user;
     }
 
+    @GetMapping("/test-gen")
+    public Student<User> testGeneric(){
+        Student<User> data = new Student<User>(){{
+            data = new User();
+        }};
+        data.name = "学生";
+        data.data.setName("李赓");
+        data.data.setId(100L);
+        data.data.setUsername("this is username");
+        return data;
+    }
+
 }

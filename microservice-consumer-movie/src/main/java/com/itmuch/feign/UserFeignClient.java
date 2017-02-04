@@ -1,6 +1,7 @@
 package com.itmuch.feign;
 
 import com.itmuch.FeignTestConfiguration;
+import com.itmuch.model.Student;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.cloud.netflix.feign.FeignClientsConfiguration;
 import org.springframework.web.bind.annotation.*;
@@ -28,4 +29,7 @@ public interface UserFeignClient{
 
   @RequestMapping(value = "/test-put2", method = RequestMethod.PUT)
   public User testPut2(@RequestAttribute User user);
+
+  @RequestMapping(value = "/test-gen", method = RequestMethod.GET)
+  public Student<User> testGeneric();
 }
