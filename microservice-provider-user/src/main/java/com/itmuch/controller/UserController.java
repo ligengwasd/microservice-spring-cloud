@@ -60,7 +60,8 @@ public class UserController {
 
 
     @GetMapping("/simple/{id}")
-    public User findById(@PathVariable Long id) {
+    public User findById(@PathVariable Long id, @RequestHeader ("host") String hostName) {
+        System.out.println(hostName);
         User user = new User();
         user.setId(id);
         return user;

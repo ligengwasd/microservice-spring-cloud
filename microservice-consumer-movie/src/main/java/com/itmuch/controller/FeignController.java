@@ -19,7 +19,7 @@ public class FeignController {
 
     @GetMapping("/movie/{id}")
     public User findById(@PathVariable Long id) {
-        return this.userFeignClient.findById(id);
+        return this.userFeignClient.findById(id, "this is tokenKey");
     }
 
     @GetMapping("/test")

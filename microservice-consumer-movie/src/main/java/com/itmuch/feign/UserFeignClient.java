@@ -2,13 +2,14 @@ package com.itmuch.feign;
 
 import com.itmuch.FeignTestConfiguration;
 import org.springframework.cloud.netflix.feign.FeignClient;
+import org.springframework.cloud.netflix.feign.FeignClientsConfiguration;
 import org.springframework.web.bind.annotation.*;
 
 @FeignClient(value = "microservice-provider-user",
         configuration = FeignTestConfiguration.class)
-public interface UserFeignClient {
+public interface UserFeignClient{
   @RequestMapping(value = "/simple/{id}", method = RequestMethod.GET)
-  public User findById(@PathVariable("id") Long id); // 两个坑：1. @GetMapping不支持   2. @PathVariable得设置value
+  public User findById(@PathVariable("id") Long id, @RequestHeader("tokenKey") String tokenKey); // 两个坑：1. @GetMapping不支持   2. @PathVariable得设置value
 
   @RequestMapping(value = "/user", method = RequestMethod.POST)
   public User postUser(@RequestBody User user);

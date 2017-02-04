@@ -1,7 +1,9 @@
 package com.itmuch;
 
-import feign.Logger;
-import feign.Retryer;
+import feign.*;
+import feign.auth.BasicAuthRequestInterceptor;
+import org.springframework.cloud.netflix.feign.encoding.BaseRequestInterceptor;
+import org.springframework.cloud.netflix.feign.support.SpringMvcContract;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -20,5 +22,22 @@ public class FeignTestConfiguration {
         return Logger.Level.FULL;
 //        return Logger.Level.NONE;
     }
+
+//    public Request.Options options(){
+//        return Request.Options();
+//    }
+
+    @Bean
+    public RequestInterceptor myRequestInterceptor(){
+        return new RequestInterceptor() {
+            @Override
+            public void apply(RequestTemplate template) {
+                System.out.println("myRequestInterceptor is executing");
+            }
+        };
+    }
+
+//    SpringMvcContract
+
 
 }
