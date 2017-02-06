@@ -6,6 +6,8 @@ import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.cloud.netflix.feign.FeignClientsConfiguration;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+
 @FeignClient(value = "microservice-provider-user",
         configuration = FeignTestConfiguration.class)
 public interface UserFeignClient{
@@ -32,4 +34,8 @@ public interface UserFeignClient{
 
   @RequestMapping(value = "/test-gen", method = RequestMethod.GET)
   public Student<User> testGeneric();
+
+  @RequestMapping(value = "/test-map", method = RequestMethod.GET)
+  Student<HashMap<String, User>> testMap();
+
 }

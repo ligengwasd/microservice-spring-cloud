@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
+
 /**
  * Created by ligeng on 17/1/29.
  */
@@ -60,6 +62,13 @@ public class FeignController {
         System.out.println(data.data.getUsername());
         return data;
     }
+
+    @GetMapping("/test-map")
+    public Student<HashMap<String, User>> testMap(){
+        return this.userFeignClient.testMap();
+    }
+
+
 
 
 }

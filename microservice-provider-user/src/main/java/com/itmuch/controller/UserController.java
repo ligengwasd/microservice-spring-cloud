@@ -13,6 +13,7 @@ import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -100,6 +101,17 @@ public class UserController {
         data.data.setName("李赓");
         data.data.setId(100L);
         data.data.setUsername("this is username");
+        return data;
+    }
+
+    @GetMapping("/test-map")
+    public Student<HashMap<String, User>> testMap(){
+        Student<HashMap<String, User>> data = new Student<HashMap<String, User>>(){{
+            data = new HashMap<String, User>();
+        }};
+        data.data.put("ligeng", new User(){{
+            setName("li gong sss");
+        }});
         return data;
     }
 
